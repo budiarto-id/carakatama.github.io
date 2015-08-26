@@ -3,6 +3,8 @@ var CARAKAN = new Array();
 
 // Aksara nglegena
 CARAKAN['k'] = '\uA930';
+CARAKAN['x'] = '\uA930\uA953\uA93C';
+CARAKAN['q'] = '\uA930';
 CARAKAN['g'] = '\uA931';
 CARAKAN['ng'] = '\uA932';
 //
@@ -11,11 +13,14 @@ CARAKAN['d'] = '\uA934';
 CARAKAN['n'] = '\uA935';
 //
 CARAKAN['p']  = '\uA936';
+CARAKAN['f']  = '\uA936';
+CARAKAN['v']  = '\uA936';
 CARAKAN['b'] = '\uA937';
 CARAKAN['m']  = '\uA938';
 //
 CARAKAN['c']  = '\uA939';
 CARAKAN['j']  = '\uA93A';
+CARAKAN['z']  = '\uA93A';
 CARAKAN['ny']  = '\uA93B';
 //
 CARAKAN['s'] = '\uA93C';
