@@ -173,7 +173,7 @@ function latin2Makassar(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdghjklmnprstwy]'
+    var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdfghjklmnpqrstvwxyz]'
     var VOK  = 'ae|[aeiuo]'
     var SILABA = '^'
 	var TANDA = '[\n \t]'
