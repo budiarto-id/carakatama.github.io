@@ -74,6 +74,8 @@ LONTARA['\t']  = '';
 var REJANG = new Array();
 
 REJANG['k']    = '\uA930';
+REJANG['q']    = '\uA930';
+REJANG['x']    = '\uA930\uA953\uA93C';
 REJANG['g']    = '\uA931';
 REJANG['ng']   = '\uA932';
 //
@@ -82,11 +84,14 @@ REJANG['d']    = '\uA934';
 REJANG['n']    = '\uA935';
 //
 REJANG['p']    = '\uA936';
+REJANG['f']    = '\uA936';
+REJANG['v']    = '\uA936';
 REJANG['b']    = '\uA937';
 REJANG['m']    = '\uA938';
 //
 REJANG['c']    = '\uA939';
 REJANG['j']    = '\uA93A';
+REJANG['z']    = '\uA93A';
 REJANG['ny']   = '\uA93B';
 //
 REJANG['s']    = '\uA93C';
@@ -100,6 +105,7 @@ REJANG['mb']   = '\uA942';
 REJANG['ngg']  = '\uA943';
 REJANG['nd']   = '\uA944';
 REJANG['nyj']  = '\uA945';
+REJANG['nj']  = '\uA945';
 // sandhangan panyigeg wanda
 REJANG['+ng'] = '\uA94F';
 REJANG['+n']  = '\uA950';
@@ -162,7 +168,7 @@ function latin2Makassar(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'ngk|ng|nyc|ny|nr|mp|[bcdfghjklmnprstwy]'
+    var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdghjklmnprstwy]'
     var VOK  = 'ae|[aeiuo]'
     var SILABA = '^'
 	var TANDA = '[\n \t]'
@@ -239,7 +245,7 @@ function latin2Rejang(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'th|dh|mb|ngg|nd|nyj|[b-df-hj-mp-tv-z]|ng|ny|n'
+    var KONS = 'th|dh|mb|ngg|nd|nyj|nj|[b-df-hj-mp-tv-z]|ng|ny|n'
     var VOK  = 'ai|au|eu|ea|[aiuo]|e'
     var REP  = ''
     var SILABA = '^'
