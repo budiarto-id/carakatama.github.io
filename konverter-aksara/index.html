@@ -26,10 +26,13 @@
       </header>
       <section>
         Aksara Latin<br/>
-        <textarea id="aksaraLatin" onkeyup="btLatin2Jawa()"></textarea>
+        <textarea id="aksaraLatin" onkeyup="btLatin2Aksara()"></textarea>
         <hr/>
-        Alih aksara ke <br/>
-        <textarea id="aksaraJawa"></textarea>
+        Alih aksara ke 	<select id="jenisAksara"onclick="btLatin2Aksara()">
+  <option>Aksara Rejang</option>
+  <option>Asara Lontara</option>
+</select> <br/>
+        <textarea id="aksaraLokal"></textarea>
       </section>
     </div>
     <footer>
