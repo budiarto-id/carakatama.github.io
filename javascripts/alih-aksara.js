@@ -142,6 +142,92 @@ REJANG['\n'] = '\r\n';
 REJANG[' ']  = '';
 REJANG['\t'] = '';
 
+
+//============================MANDAILING VARIABLE============================//
+var MANDAILING = new Array();
+MANDAILING['h'] = '\u1BC4';
+MANDAILING['k'] = '\u1BC4\u1BE6';
+MANDAILING['b'] = '\u1BC5';
+MANDAILING['p'] = '\u1BC7';
+MANDAILING['n'] = '\u1BC9';
+MANDAILING['w'] = '\u1BCB';
+MANDAILING['g'] = '\u1BCE';
+MANDAILING['j'] = '\u1BD0';
+MANDAILING['d'] = '\u1BD1';
+MANDAILING['r'] = '\u1BD2';
+MANDAILING['m'] = '\u1BD4';
+MANDAILING['t'] = '\u1BD6';
+MANDAILING['s'] = '\u1BDA';
+MANDAILING['y'] = '\u1BDB';
+MANDAILING['ng'] = '\u1BDD';
+MANDAILING['l'] = '\u1BDE';
+MANDAILING['ny'] = '\u1BE0';
+MANDAILING['c'] = '\u1BDA\u1BE6';
+
+MANDAILING['a'] = '';
+MANDAILING['e'] = '\u1BE9';
+MANDAILING['ae'] = '\u1BE9';
+MANDAILING['i'] = '\u1BEA';
+MANDAILING['o'] = '\u1BEC';
+MANDAILING['u'] = '\u1BEE';
+
+MANDAILING['A'] = '\u1BC0';
+MANDAILING['E'] = '\u1BC0\u1BE9';
+MANDAILING['AE'] = '\u1BC0\u1BE9';
+MANDAILING['I'] = '\u1BE4';
+MANDAILING['O'] = '\u1BC0\u1BEC';
+MANDAILING['U'] = '\u1BE5';
+
+MANDAILING['+ng'] = '\u1BF0';
+MANDAILING['+O'] = '\u1BF2';
+// pada (tanda baca)
+MANDAILING['\n'] = '\r\n'; 
+MANDAILING[' ']  = '';
+MANDAILING['\t'] = '';
+
+//============================SIMALUNGUN VARIABLE============================//
+var SIMALUNGUN = new Array();
+SIMALUNGUN['h'] = '\u1BC3';
+SIMALUNGUN['k'] = '\u1BC3';
+SIMALUNGUN['b'] = '\u1BC5';
+SIMALUNGUN['p'] = '\u1BC8';
+SIMALUNGUN['n'] = '\u1BC9';
+SIMALUNGUN['w'] = '\u1BCC';
+SIMALUNGUN['g'] = '\u1BCF';
+SIMALUNGUN['j'] = '\u1BD0';
+SIMALUNGUN['d'] = '\u1BD1';
+SIMALUNGUN['r'] = '\u1BD3';
+SIMALUNGUN['m'] = '\u1BD5';
+SIMALUNGUN['t'] = '\u1BD6';
+SIMALUNGUN['s'] = '\u1BD9';
+SIMALUNGUN['y'] = '\u1BDC';
+SIMALUNGUN['ng'] = '\u1BDD';
+SIMALUNGUN['l'] = '\u1BDF';
+SIMALUNGUN['ny'] = '\u1BE0';
+
+SIMALUNGUN['a'] = '';
+SIMALUNGUN['e'] = '\u1BE9';
+SIMALUNGUN['ae'] = '\u1BE9';
+SIMALUNGUN['i'] = '\u1BEB';
+SIMALUNGUN['o'] = '\u1BEC';
+SIMALUNGUN['u'] = '\u1BEE';
+SIMALUNGUN['su'] = '\u1BE9';
+
+SIMALUNGUN['A'] = '\u1BC1';
+SIMALUNGUN['E'] = '\u1BC1\u1BE9';
+SIMALUNGUN['AE'] = '\u1BC1\u1BE9';
+SIMALUNGUN['I'] = '\u1BE4';
+SIMALUNGUN['O'] = '\u1BC1\u1BEC';
+SIMALUNGUN['U'] = '\u1BE5';
+
+SIMALUNGUN['+ng'] = '\u1BF0';
+SIMALUNGUN['+H'] = '\u1BF1';
+SIMALUNGUN['+O'] = '\u1BF3';
+// pada (tanda baca)
+SIMALUNGUN['\n'] = '\r\n'; 
+SIMALUNGUN[' ']  = '';
+SIMALUNGUN['\t'] = '';
+
 //Fungsi Panyigeg Wanda Rejang-------------------------------------------------//
 function sigegRejang(aksara)
 {
