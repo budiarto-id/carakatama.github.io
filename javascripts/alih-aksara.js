@@ -228,6 +228,83 @@ function latin2Makassar(strInp)
     return strOut
 }
 
+//Fungsi Aksara Latin -> Aksara Lontara Bugis -----------------------------//
+function latin2Bugis(strInp)
+{    
+    var strMakassar = ''
+    
+    strInp = strInp.toLowerCase()
+
+    var inpLength = strInp.length
+    var idx = 0
+    var jump = 0
+
+    var strOut = ''
+    var r
+    var silaba
+    var suku
+    var polaWanda = PAT_LAIN
+    
+    var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdghjklmnprstwy]'
+    var VOK  = 'ae|[aeiuo]'
+    var SILABA = '^'
+	var TANDA = '[\n \t]'
+    SILABA += '('+KONS+')?'             // group(1), K
+    SILABA += '('+VOK+')'               // group(2)V
+    KONSONAN = '^('+KONS+')'
+	TANDA_BACA = '^('+TANDA+')'
+    //var DIGIT = '^([0-9]+)'
+    
+    while (idx < inpLength) {
+        suku = ''
+        r = strInp.match(SILABA)
+		//return r;
+        if (r !== null) {
+            if (r[1]){
+				polaWanda = PAT_KV
+			}else{
+				polaWanda = PAT_V
+			}
+            
+            // bentuk:
+            if (polaWanda == PAT_KV) {
+                suku = r[1] + r[2]
+				silaba  = LONTARA[r[1]]
+				silaba += LONTARA[r[2]]
+            }else {
+                suku = r[2]
+                silaba = LONTARA[suku.toUpperCase()]
+            } // end if
+            strOut += silaba 
+            polaWanda = PAT_SILABA
+        } else {
+            r = strInp.match(KONSONAN)
+            if (r != null) {
+                suku   = r[1]
+				silaba = ''
+                strOut += silaba
+            } else {
+				r = strInp.match(TANDA_BACA)
+				if (r != null){
+					 suku = r[1]
+					 silaba = LONTARA[suku]
+					 strOut += silaba
+				}else{
+					suku = strInp.substr(0,1)
+					silaba = suku
+					strOut += suku
+				}
+            } // end if
+            polaWanda = PAT_LAIN
+        }// end if
+        strInp = strInp.substr(suku.length)
+        idx += suku.length
+    
+    }// end while
+
+    return strOut
+}
+
 //Fungsi Aksara Latin -> Aksara Rejang ---------------------------------------//
 function latin2Rejang(strInp)
 {    
