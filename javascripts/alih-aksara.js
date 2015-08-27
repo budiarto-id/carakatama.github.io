@@ -24,11 +24,14 @@ var LONTARA = new Array();
 
 // 
 LONTARA['k']   = '\u1A00';
+LONTARA['q']   = '\u1A00';
 LONTARA['g']   = '\u1A01';
 LONTARA['ng']  = '\u1A02';
 LONTARA['ngk'] = '\u1A03';
 //
 LONTARA['p']   = '\u1A04';
+LONTARA['f']   = '\u1A04';
+LONTARA['v']   = '\u1A04';
 LONTARA['b']   = '\u1A05';
 LONTARA['m']   = '\u1A06';
 LONTARA['mp']  = '\u1A07';
@@ -40,6 +43,7 @@ LONTARA['nr']  = '\u1A0B';
 //
 LONTARA['c']   = '\u1A0C';
 LONTARA['j']   = '\u1A0D';
+LONTARA['z']   = '\u1A0D';
 LONTARA['ny']  = '\u1A0E';
 LONTARA['nyc'] = '\u1A0F';
 LONTARA['nc']  = '\u1A0F';
@@ -49,6 +53,7 @@ LONTARA['r']   = '\u1A11';
 LONTARA['l']   = '\u1A12';
 LONTARA['w']   = '\u1A13';
 LONTARA['s']   = '\u1A14';
+LONTARA['x']   = '\u1A14';
 LONTARA['h']   = '\u1A16';
 //
 LONTARA['A']   = '\u1A15';//A984';
@@ -326,7 +331,7 @@ function latin2Rejang(strInp)
     var VOK  = 'ai|au|eu|ea|[aiuo]|e'
     var REP  = ''
     var SILABA = '^'
-	  var TANDA = '[,.\n \t;:\'\"()]'
+    var TANDA = '[\n \t]'
     SILABA += '('+KONS+')?'             // group(1), K
     SILABA += '('+REP+')?'              // group(2), R
     SILABA += '('+VOK+')'               // group(3), V
