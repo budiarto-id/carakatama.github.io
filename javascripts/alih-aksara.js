@@ -12,11 +12,11 @@ PAT_LAIN   = 0x00	//Sanesipun
 AK_REJANG     = 0x00
 AK_MAKASSAR   = 0x01
 AK_BUGIS      = 0x02
-AK_TOBA       = 0x03
-AK_KARO       = 0x04
-AK_SIMALUNGUN = 0x05
-AK_MANDAILING = 0x06
-AK_DAIRI      = 0x07
+AK_MANDAILING = 0x03
+AK_SIMALUNGUN = 0x04
+AK_TOBA       = 0x05
+AK_PAKPAK     = 0x06
+AK_KARO       = 0x07
 AK_LAIN       = 0xff
 
 //============================LONTARA VARIABLE============================//
