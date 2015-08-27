@@ -1,78 +1,3 @@
-//Variabel Unicode Aksara Jawa----------------------------------------------//
-var CARAKAN = new Array();
-
-// Aksara nglegena
-CARAKAN['k'] = '\uA930';
-CARAKAN['x'] = '\uA930\uA953\uA93C';
-CARAKAN['q'] = '\uA930';
-CARAKAN['g'] = '\uA931';
-CARAKAN['ng'] = '\uA932';
-//
-CARAKAN['t'] = '\uA933';
-CARAKAN['d'] = '\uA934';
-CARAKAN['n'] = '\uA935';
-//
-CARAKAN['p']  = '\uA936';
-CARAKAN['f']  = '\uA936';
-CARAKAN['v']  = '\uA936';
-CARAKAN['b'] = '\uA937';
-CARAKAN['m']  = '\uA938';
-//
-CARAKAN['c']  = '\uA939';
-CARAKAN['j']  = '\uA93A';
-CARAKAN['z']  = '\uA93A';
-CARAKAN['ny']  = '\uA93B';
-//
-CARAKAN['s'] = '\uA93C';
-CARAKAN['r'] = '\uA93D';
-CARAKAN['l']  = '\uA93E';
-CARAKAN['y']  = '\uA93F';
-CARAKAN['w']  = '\uA940';
-CARAKAN['h']  = '\uA941';
-//
-CARAKAN['mb'] = '\uA942';
-CARAKAN['ngg'] = '\uA943';
-CARAKAN['nd']  = '\uA944';
-CARAKAN['nyj']  = '\uA945';
-// sandhangan panyigeg wanda
-CARAKAN['+ng'] = '\uA94F';
-CARAKAN['+n']  = '\uA950';
-CARAKAN['+r']  = '\uA951';
-CARAKAN['+h']  = '\uA952';
-CARAKAN['+O']  = '\uA953';//pangkon
-// aksara swara ha, hi, hu
-CARAKAN['A']      = '\uA946';//A984';
-CARAKAN['I']      = '\uA946\uA947';
-CARAKAN['U']      = '\uA946\uA948';
-CARAKAN['E']     = '\uA946\uA949';
-CARAKAN['AI']      = '\uA946\uA94A';
-CARAKAN['O']      = '\uA946\uA94B';
-CARAKAN['AU']      = '\uA946\uA94C';
-CARAKAN['EU']      = '\uA946\uA94D';
-CARAKAN['EA']      = '\uA946\uA94E';
-// aksara swara ha, hi, hu
-CARAKAN['a']      = '';//A984';
-CARAKAN['i']      = '\uA947';
-CARAKAN['u']      = '\uA948';
-CARAKAN['e']     = '\uA949';
-CARAKAN['ai']      = '\uA94A';
-CARAKAN['o']      = '\uA94B';
-CARAKAN['au']      = '\uA94C';
-CARAKAN['eu']      = '\uA94D';
-CARAKAN['ea']      = '\uA94E';
-// pada (tanda baca)
-CARAKAN[',']  = ','; //pada lingsa
-CARAKAN['.']  = '.'; //pada lungsi
-CARAKAN['\n'] = '\r\n'; 
-CARAKAN[' ']  = '';
-CARAKAN['\t'] = '';
-CARAKAN[':']  = ':';
-CARAKAN[';']  = ';';
-CARAKAN['\''] = '\'';
-CARAKAN['\"'] = '\"';
-CARAKAN['(']  = '('; //rerenggan kiwa
-CARAKAN[')']  = ')'; //rerenggan tengen
-
 //Variabel Pola Suku Kata (Wanda)-------------------------------------------// 
 PAT_V      = 0x01	//Vokal
 PAT_VK     = 0x02	//Vokal + Konsonan
@@ -83,25 +8,224 @@ PAT_KRVK   = 0x06	//Konsonan + Panjingan + Vokal + Konsonan
 PAT_SILABA = 0x07	//Konsonan
 PAT_LAIN   = 0x00	//Sanesipun
 
-//Fungsi Panyigeg Wanda-----------------------------------------------------//
-function sigeg (aksara)
+//Variabel jenis Aksara Lokal -------------------------------------------// 
+AK_REJANG     = 0x00
+AK_MAKASSAR   = 0x01
+AK_BUGIS      = 0x02
+AK_TOBA       = 0x03
+AK_KARO       = 0x04
+AK_SIMALUNGUN = 0x05
+AK_MANDAILING = 0x06
+AK_DAIRI      = 0x07
+AK_LAIN       = 0xff
+
+//============================LONTARA VARIABLE============================//
+var LONTARA = new Array();
+
+// 
+LONTARA['k']   = '\u1A00';
+LONTARA['g']   = '\u1A01';
+LONTARA['ng']  = '\u1A02';
+LONTARA['ngk'] = '\u1A03';
+//
+LONTARA['p']   = '\u1A04';
+LONTARA['b']   = '\u1A05';
+LONTARA['m']   = '\u1A06';
+LONTARA['mp']  = '\u1A07';
+//
+LONTARA['t']   = '\u1A08';
+LONTARA['d']   = '\u1A09';
+LONTARA['n']   = '\u1A0A';
+LONTARA['nr']  = '\u1A0B';
+//
+LONTARA['c']   = '\u1A0C';
+LONTARA['j']   = '\u1A0D';
+LONTARA['ny']  = '\u1A0E';
+LONTARA['nyc'] = '\u1A0F';
+LONTARA['nc']  = '\u1A0F';
+//
+LONTARA['y']   = '\u1A10';
+LONTARA['r']   = '\u1A11';
+LONTARA['l']   = '\u1A12';
+LONTARA['w']   = '\u1A13';
+LONTARA['s']   = '\u1A14';
+LONTARA['h']   = '\u1A16';
+//
+LONTARA['A']   = '\u1A15';//A984';
+LONTARA['I']   = '\u1A15\u1A17';
+LONTARA['U']   = '\u1A15\u1A18';
+LONTARA['E']   = '\u1A15\u1A19';
+LONTARA['O']   = '\u1A15\u1A1A';
+LONTARA['AE']  = '\u1A15\u1A1B';
+//
+LONTARA['a']   = '';//A984';
+LONTARA['i']   = '\u1A17';
+LONTARA['u']   = '\u1A18';
+LONTARA['e']   = '\u1A19';
+LONTARA['o']   = '\u1A1A';
+LONTARA['ae']  = '\u1A1B';
+// pada (tanda baca)
+LONTARA['\n']  = '\r\n'; 
+LONTARA[' ']   = '';
+LONTARA['\t']  = '';
+
+
+//============================REJANG VARIABLE============================//
+var REJANG = new Array();
+
+REJANG['k']    = '\uA930';
+REJANG['g']    = '\uA931';
+REJANG['ng']   = '\uA932';
+//
+REJANG['t']    = '\uA933';
+REJANG['d']    = '\uA934';
+REJANG['n']    = '\uA935';
+//
+REJANG['p']    = '\uA936';
+REJANG['b']    = '\uA937';
+REJANG['m']    = '\uA938';
+//
+REJANG['c']    = '\uA939';
+REJANG['j']    = '\uA93A';
+REJANG['ny']   = '\uA93B';
+//
+REJANG['s']    = '\uA93C';
+REJANG['r']    = '\uA93D';
+REJANG['l']    = '\uA93E';
+REJANG['y']    = '\uA93F';
+REJANG['w']    = '\uA940';
+REJANG['h']    = '\uA941';
+//
+REJANG['mb']   = '\uA942';
+REJANG['ngg']  = '\uA943';
+REJANG['nd']   = '\uA944';
+REJANG['nyj']  = '\uA945';
+// sandhangan panyigeg wanda
+REJANG['+ng'] = '\uA94F';
+REJANG['+n']  = '\uA950';
+REJANG['+r']  = '\uA951';
+REJANG['+h']  = '\uA952';
+REJANG['+O']  = '\uA953';//pangkon
+// aksara swara ha, hi, hu
+REJANG['A']  = '\uA946';//A984';
+REJANG['I']  = '\uA946\uA947';
+REJANG['U']  = '\uA946\uA948';
+REJANG['E']  = '\uA946\uA949';
+REJANG['AI'] = '\uA946\uA94A';
+REJANG['O']  = '\uA946\uA94B';
+REJANG['AU'] = '\uA946\uA94C';
+REJANG['EU'] = '\uA946\uA94D';
+REJANG['EA'] = '\uA946\uA94E';
+// aksara swara ha, hi, hu
+REJANG['a']  = '';//A984';
+REJANG['i']  = '\uA947';
+REJANG['u']  = '\uA948';
+REJANG['e']  = '\uA949';
+REJANG['ai'] = '\uA94A';
+REJANG['o']  = '\uA94B';
+REJANG['au'] = '\uA94C';
+REJANG['eu'] = '\uA94D';
+REJANG['ea'] = '\uA94E';
+// pada (tanda baca)
+REJANG['\n'] = '\r\n'; 
+REJANG[' ']  = '';
+REJANG['\t'] = '';
+
+//Fungsi Panyigeg Wanda Rejang-------------------------------------------------//
+function sigegRejang(aksara)
 {
     var output = ''
 
     if (aksara == 'h' || aksara == 'r' || aksara == 'ng' || aksara == 'n') {
-        output = CARAKAN['+' + aksara]
+        output = REJANG['+' + aksara]
     } else {
-        output = CARAKAN[aksara] + CARAKAN['+O']
+        output = REJANG[aksara] + REJANG['+O']
     }
     
     return output
-} // end sigeg
+} // end sigegRejang
 
-
-//Fungsi Aksara Latin -> Aksara Jawa ---------------------------------------//
-function Latin2Jawa(strInp)
+//Fungsi Aksara Latin -> Aksara Lontara Makassar -----------------------------//
+function latin2Makassar(strInp)
 {    
-    var jawaText = ''
+    var strMakassar = ''
+    
+    strInp = strInp.toLowerCase()
+
+    var inpLength = strInp.length
+    var idx = 0
+    var jump = 0
+
+    var strOut = ''
+    var r
+    var silaba
+    var suku
+    var polaWanda = PAT_LAIN
+    
+    var KONS = 'ngk|ng|nyc|ny|nr|mp|[bcdfghjklmnprstwy]'
+    var VOK  = 'ae|[aeiuo]'
+    var SILABA = '^'
+	var TANDA = '[\n \t]'
+    SILABA += '('+KONS+')?'             // group(1), K
+    SILABA += '('+VOK+')'               // group(2)V
+    KONSONAN = '^('+KONS+')'
+	TANDA_BACA = '^('+TANDA+')'
+    //var DIGIT = '^([0-9]+)'
+    
+    while (idx < inpLength) {
+        suku = ''
+        r = strInp.match(SILABA)
+		//return r;
+        if (r !== null) {
+            if (r[1]){
+				polaWanda = PAT_KV
+			}else{
+				polaWanda = PAT_V
+			}
+            
+            // bentuk:
+            if (polaWanda == PAT_KV) {
+                suku = r[1] + r[2]
+				silaba  = LONTARA[r[1]]
+				silaba += LONTARA[r[2]]
+            }else {
+                suku = r[2]
+                silaba = LONTARA[suku.toUpperCase()]
+            } // end if
+            strOut += silaba 
+            polaWanda = PAT_SILABA
+        } else {
+            r = strInp.match(KONSONAN)
+            if (r != null) {
+                suku   = r[1]
+				silaba = ''
+                strOut += silaba
+            } else {
+				r = strInp.match(TANDA_BACA)
+				if (r != null){
+					 suku = r[1]
+					 silaba = LONTARA[suku]
+					 strOut += silaba
+				}else{
+					suku = strInp.substr(0,1)
+					silaba = suku
+					strOut += suku
+				}
+            } // end if
+            polaWanda = PAT_LAIN
+        }// end if
+        strInp = strInp.substr(suku.length)
+        idx += suku.length
+    
+    }// end while
+
+    return strOut
+}
+
+//Fungsi Aksara Latin -> Aksara Rejang ---------------------------------------//
+function latin2Rejang(strInp)
+{    
+    var strRejang = ''
     
     strInp = strInp.toLowerCase()
 
@@ -132,6 +256,7 @@ function Latin2Jawa(strInp)
     while (idx < inpLength) {
         suku = ''
         r = strInp.match(SILABA)
+		//return r;
         if (r !== null) {
             if (r[1]) { 
                 if (r[4]) { 
@@ -170,48 +295,48 @@ function Latin2Jawa(strInp)
             // bentuk:
             if (polaWanda == PAT_KRVK) {
                 suku = r[1] + r[2] + r[3] + r[4]
-                silaba  = CARAKAN[r[1]]
+                silaba  = REJANG[r[1]]
 				if (r[2]+r[3] != 're'){
-					silaba += CARAKAN['+' + r[2] + 'a']
-					silaba += CARAKAN[r[3]]
+					silaba += REJANG['+' + r[2] + 'a']
+					silaba += REJANG[r[3]]
 				}else{
-					silaba += CARAKAN['+' + r[2] + 'e']
+					silaba += REJANG['+' + r[2] + 'e']
 				}
-                silaba += sigeg(r[4])
+                silaba += sigegRejang(r[4])
             } else if (polaWanda == PAT_KRV) {
                 suku = r[1] + r[2] + r[3]
-                silaba  = CARAKAN[r[1]]
+                silaba  = REJANG[r[1]]
 				if (r[2]+r[3] != 're'){
-					silaba += CARAKAN['+' + r[2] + 'a']
-					silaba += CARAKAN[r[3]]
+					silaba += REJANG['+' + r[2] + 'a']
+					silaba += REJANG[r[3]]
 				}else{
-					silaba += CARAKAN['+' + r[2] + 'e']
+					silaba += REJANG['+' + r[2] + 'e']
 				}
             } else if (polaWanda == PAT_KVK) {
                 suku = r[1] + r[3] + r[4]
 				//if ((r[1]+r[3] != 're')&&(r[1]+r[3] != 'le')){
-					silaba  = CARAKAN[r[1]]
-					silaba += CARAKAN[r[3]]
-					silaba += sigeg(r[4])
+					silaba  = REJANG[r[1]]
+					silaba += REJANG[r[3]]
+					silaba += sigegRejang(r[4])
 				//}else{
-				//	silaba = CARAKAN[r[1]+r[3]];
+				//	silaba = REJANG[r[1]+r[3]];
 				//	silaba += sigeg(r[4])
 				//}
             } else if (polaWanda == PAT_KV) {
                 suku = r[1] + r[3]
         		//		if ((suku != 're')&&(suku != 'le')){
-        					silaba  = CARAKAN[r[1]]
-        					silaba += CARAKAN[r[3]]
+        					silaba  = REJANG[r[1]]
+        					silaba += REJANG[r[3]]
         		//		}else{
-        		//			silaba = CARAKAN[r[1]+r[3]]
+        		//			silaba = REJANG[r[1]+r[3]]
         		//		}
             } else if (polaWanda == PAT_VK) {
                 suku = r[3] + r[4]
-                silaba  = CARAKAN[r[3].toUpperCase()]
-                silaba += sigeg(r[4])
+                silaba  = REJANG[r[3].toUpperCase()]
+                silaba += sigegRejang(r[4])
             } else {
                 suku = r[3]
-                silaba = CARAKAN[suku.toUpperCase()]
+                silaba = REJANG[suku.toUpperCase()]
             } // end if
             strOut += silaba 
             polaWanda = PAT_SILABA
@@ -221,9 +346,9 @@ function Latin2Jawa(strInp)
                 suku   = r[1]
                 if (polaWanda == PAT_SILABA)
                 {
-                    silaba = sigeg(suku)
+                    silaba = sigegRejang(suku)
                 } else {
-                    silaba = CARAKAN[suku] + CARAKAN['+O']
+                    silaba = REJANG[suku] + REJANG['+O']
                 }
                 strOut += silaba
             } else {
@@ -234,7 +359,7 @@ function Latin2Jawa(strInp)
                     l = suku.length
                     i = 0
                     while (i<l) {
-                        silaba += CARAKAN[suku.substr(i,1)]
+                        silaba += REJANG[suku.substr(i,1)]
                         i += 1
                     } //end while
                     silaba += '\uA9C7'
@@ -243,7 +368,7 @@ function Latin2Jawa(strInp)
                     r = strInp.match(TANDA_BACA)
           					if (r != null){
           						 suku = r[1]
-          						 silaba = CARAKAN[suku]
+          						 silaba = REJANG[suku]
           						 strOut += silaba
           					}else{
           						suku = strInp.substr(0,1)
@@ -261,14 +386,20 @@ function Latin2Jawa(strInp)
     }// end while
 
     return strOut
-}
+}//end latin2Rejang
 
 //Fungsi Untuk Mengeksekusi Fungsi Latin2Jawa ------------------------------//
-function btLatin2Jawa()
+function btLatin2Aksara()
 {
 	var latinText = document.getElementById('aksaraLatin').value
-	var jawaText = Latin2Jawa(latinText);        
-	document.getElementById('aksaraJawa').value = jawaText;
+	var strAksara =''
+	var jenisAksara = document.getElementById("jenisAksara").selectedIndex;
+	if (jenisAksara == AK_REJANG){
+		strAksara = latin2Rejang(latinText);   
+	}else if (jenisAksara == AK_MAKASSAR){
+		strAksara = latin2Makassar(latinText);   
+	}
+	document.getElementById('aksaraLokal').value = strAksara;
 }
 
 
