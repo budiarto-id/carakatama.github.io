@@ -11,11 +11,11 @@ PAT_LAIN   = 0x00	//Sanesipun
 //Variabel jenis Aksara Lokal -------------------------------------------// 
 AK_REJANG     = 0x00
 AK_MAKASSAR   = 0x01
-AK_BUGIS      = 0x02
-AK_MANDAILING = 0x03
-AK_SIMALUNGUN = 0x04
-AK_TOBA       = 0x05
-AK_PAKPAK     = 0x06
+AK_BUGIS      = 0xf2
+AK_MANDAILING = 0x02
+AK_SIMALUNGUN = 0x03
+AK_TOBA       = 0x04
+AK_PAKPAK     = 0x05
 AK_KARO       = 0x07
 AK_LAIN       = 0xff
 
@@ -221,7 +221,7 @@ SIMALUNGUN['O'] = '\u1BC1\u1BEC';
 SIMALUNGUN['U'] = '\u1BE5';
 
 SIMALUNGUN['+ng'] = '\u1BF0';
-SIMALUNGUN['+H'] = '\u1BF1';
+SIMALUNGUN['+h'] = '\u1BF1';
 SIMALUNGUN['+O'] = '\u1BF3';
 // pada (tanda baca)
 SIMALUNGUN['\n'] = '\r\n'; 
@@ -237,6 +237,19 @@ function sigegRejang(aksara)
         output = REJANG['+' + aksara]
     } else {
         output = REJANG[aksara] + REJANG['+O']
+    }
+    
+    return output
+} // end sigegRejang
+//Fungsi Panyigeg Wanda Rejang-------------------------------------------------//
+function sigegMandailing(aksara)
+{
+    var output = ''
+
+    if (aksara == 'ng') {
+        output = MANDAILING['+' + aksara]
+    } else {
+        output = MANDAILING[aksara] + MANDAILING['+O']
     }
     
     return output
@@ -413,7 +426,7 @@ function latin2Rejang(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'th|dh|mb|ngg|nd|nyj|nj|[b-df-hj-mp-tv-z]|ng|ny|n'
+    var KONS = 'mb|ngg|nd|nyj|nj|[b-df-hj-mp-tv-z]|ng|ny|n'
     var VOK  = 'ai|au|eu|ea|[aiuo]|e'
     var REP  = ''
     var SILABA = '^'
@@ -562,6 +575,172 @@ function latin2Rejang(strInp)
     return strOut
 }//end latin2Rejang
 
+//Fungsi Aksara Latin -> Aksara Rejang ---------------------------------------//
+function latin2Mandailing(strInp)
+{    
+    var strMandailing = ''
+    
+    strInp = strInp.toLowerCase()
+
+    var inpLength = strInp.length
+    var idx = 0
+    var jump = 0
+
+    var strOut = ''
+    var r
+    var silaba
+    var suku
+    var polaWanda = PAT_LAIN
+    
+    var KONS = 'ng|ny|[bcdghjklmnprstwy]'
+    var VOK  = 'ae|[aiuo]|e'
+    var REP  = ''
+    var SILABA = '^'
+    var TANDA = '[\n \t]'
+    SILABA += '('+KONS+')?'             // group(1), K
+    SILABA += '('+REP+')?'              // group(2), R
+    SILABA += '('+VOK+')'               // group(3), V
+    SILABA += '('+KONS+')?'             // group(4), K
+    SILABA += '('+VOK+'|'+REP+')?'      // group(5), V|R
+    KONSONAN = '^('+KONS+')'
+	  TANDA_BACA = '^('+TANDA+')'
+    var DIGIT = '^([0-9]+)'
+    
+    while (idx < inpLength) {
+        suku = ''
+        r = strInp.match(SILABA)
+		//return r;
+        if (r !== null) {
+            if (r[1]) { 
+                if (r[4]) { 
+                    if (r[2]) { 
+                        if (r[5]) {
+                            polaWanda = PAT_KRV 
+                        } else {
+                            polaWanda = PAT_KRVK 
+                        }
+                    } else {
+                        if (r[5]) { 
+                            polaWanda = PAT_KV
+                        } else {
+                            polaWanda = PAT_KVK
+                        }
+                    }
+                } else {
+                    if (r[2]) { 
+                        polaWanda = PAT_KRV
+                    } else {
+                        polaWanda = PAT_KV
+                    }
+                }
+            } else {
+                if (r[4]) { 
+                    if (r[5]) { 
+                        polaWanda = PAT_V
+                    } else {
+                        polaWanda = PAT_VK
+                    }
+                } else {
+                    polaWanda = PAT_V
+                }
+            }
+            
+            // bentuk:
+            if (polaWanda == PAT_KRVK) {
+                suku = r[1] + r[2] + r[3] + r[4]
+                silaba  = MANDAILING[r[1]]
+				if (r[2]+r[3] != 're'){
+					silaba += MANDAILING['+' + r[2] + 'a']
+					silaba += MANDAILING[r[3]]
+				}else{
+					silaba += MANDAILING['+' + r[2] + 'e']
+				}
+                silaba += sigegMandailing(r[4])
+            } else if (polaWanda == PAT_KRV) {
+                suku = r[1] + r[2] + r[3]
+                silaba  = MANDAILING[r[1]]
+				if (r[2]+r[3] != 're'){
+					silaba += MANDAILING['+' + r[2] + 'a']
+					silaba += MANDAILING[r[3]]
+				}else{
+					silaba += MANDAILING['+' + r[2] + 'e']
+				}
+            } else if (polaWanda == PAT_KVK) {
+                suku = r[1] + r[3] + r[4]
+				//if ((r[1]+r[3] != 're')&&(r[1]+r[3] != 'le')){
+					silaba  = MANDAILING[r[1]]
+					silaba += MANDAILING[r[3]]
+					silaba += sigegMandailing(r[4])
+				//}else{
+				//	silaba = REJANG[r[1]+r[3]];
+				//	silaba += sigeg(r[4])
+				//}
+            } else if (polaWanda == PAT_KV) {
+                suku = r[1] + r[3]
+        		//		if ((suku != 're')&&(suku != 'le')){
+        					silaba  = MANDAILING[r[1]]
+        					silaba += MANDAILING[r[3]]
+        		//		}else{
+        		//			silaba = REJANG[r[1]+r[3]]
+        		//		}
+            } else if (polaWanda == PAT_VK) {
+                suku = r[3] + r[4]
+                silaba  = MANDAILING[r[3].toUpperCase()]
+                silaba += sigegMandailing(r[4])
+            } else {
+                suku = r[3]
+                silaba = MANDAILING[suku.toUpperCase()]
+            } // end if
+            strOut += silaba 
+            polaWanda = PAT_SILABA
+        } else {
+            r = strInp.match(KONSONAN)
+            if (r != null) {
+                suku   = r[1]
+                if (polaWanda == PAT_SILABA)
+                {
+                    silaba = sigegMandailing(suku)
+                } else {
+                    silaba = MANDAILING[suku] + MANDAILING['+O']
+                }
+                strOut += silaba
+            } else {
+               /* r = strInp.match(DIGIT)
+                if (r != null) {
+                    silaba = '\uA9C7'
+                    suku = r[1]
+                    l = suku.length
+                    i = 0
+                    while (i<l) {
+                        silaba += REJANG[suku.substr(i,1)]
+                        i += 1
+                    } //end while
+                    silaba += '\uA9C7'
+                    strOut += silaba
+                } else {*/
+                    r = strInp.match(TANDA_BACA)
+          					if (r != null){
+          						 suku = r[1]
+          						 silaba = MANDAILING[suku]
+          						 strOut += silaba
+          					}else{
+          						suku = strInp.substr(0,1)
+          						silaba = suku
+          						strOut += suku
+          					}
+                //}
+                //end if
+            } // end if
+            polaWanda = PAT_LAIN
+        }// end if
+        strInp = strInp.substr(suku.length)
+        idx += suku.length
+    
+    }// end while
+
+    return strOut
+}//end latin2Rejang
+
 //Fungsi Untuk Mengeksekusi Fungsi Latin2Jawa ------------------------------//
 function btLatin2Aksara()
 {
@@ -572,6 +751,8 @@ function btLatin2Aksara()
 		strAksara = latin2Rejang(latinText);   
 	}else if (jenisAksara == AK_MAKASSAR){
 		strAksara = latin2Makassar(latinText);   
+	}else if (jenisAksara == AK_MANDAILING){
+		strAksara = latin2Mandailing(latinText);   
 	}
 	document.getElementById('aksaraLokal').value = strAksara;
 }
