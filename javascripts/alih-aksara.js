@@ -255,6 +255,20 @@ function sigegMandailing(aksara)
     return output
 } // end sigegRejang
 
+//Fungsi Panyigeg Wanda Simalungun-------------------------------------------------//
+function sigegSimalungun(aksara)
+{
+    var output = ''
+
+    if (aksara == 'h' aksara == 'ng') {
+        output = SIMALUNGUN['+' + aksara]
+    } else {
+        output = SIMALUNGUN[aksara] + SIMALUNGUN['+O']
+    }
+    
+    return output
+} // end sigegSimalungun
+
 //Fungsi Aksara Latin -> Aksara Lontara Makassar -----------------------------//
 function latin2Makassar(strInp)
 {    
@@ -575,7 +589,7 @@ function latin2Rejang(strInp)
     return strOut
 }//end latin2Rejang
 
-//Fungsi Aksara Latin -> Aksara Rejang ---------------------------------------//
+//Fungsi Aksara Latin -> Aksara Mandailing ---------------------------------------//
 function latin2Mandailing(strInp)
 {    
     var strMandailing = ''
@@ -739,7 +753,162 @@ function latin2Mandailing(strInp)
     }// end while
 
     return strOut
-}//end latin2Rejang
+}//end latin2Mandailing
+
+//Fungsi Aksara Latin -> Aksara Simalungun ---------------------------------------//
+function latin2Simalungun(strInp)
+{    
+    var strSimalungun = ''
+    
+    strInp = strInp.toLowerCase()
+
+    var inpLength = strInp.length
+    var idx = 0
+    var jump = 0
+
+    var strOut = ''
+    var r
+    var silaba
+    var suku
+    var polaWanda = PAT_LAIN
+    
+    var KONS = 'ng|ny|[bcdghjklmnprstwy]'
+    var VOK  = 'ae|[aiuo]|e'
+    var REP  = ''
+    var SILABA = '^'
+    var TANDA = '[\n \t]'
+    SILABA += '('+KONS+')?'             // group(1), K
+    SILABA += '('+REP+')?'              // group(2), R
+    SILABA += '('+VOK+')'               // group(3), V
+    SILABA += '('+KONS+')?'             // group(4), K
+    SILABA += '('+VOK+'|'+REP+')?'      // group(5), V|R
+    KONSONAN = '^('+KONS+')'
+	  TANDA_BACA = '^('+TANDA+')'
+    var DIGIT = '^([0-9]+)'
+    
+    while (idx < inpLength) {
+        suku = ''
+        r = strInp.match(SILABA)
+		//return r;
+        if (r !== null) {
+            if (r[1]) { 
+                if (r[4]) { 
+                    if (r[2]) { 
+                        if (r[5]) {
+                            polaWanda = PAT_KRV 
+                        } else {
+                            polaWanda = PAT_KRVK 
+                        }
+                    } else {
+                        if (r[5]) { 
+                            polaWanda = PAT_KV
+                        } else {
+                            polaWanda = PAT_KVK
+                        }
+                    }
+                } else {
+                    if (r[2]) { 
+                        polaWanda = PAT_KRV
+                    } else {
+                        polaWanda = PAT_KV
+                    }
+                }
+            } else {
+                if (r[4]) { 
+                    if (r[5]) { 
+                        polaWanda = PAT_V
+                    } else {
+                        polaWanda = PAT_VK
+                    }
+                } else {
+                    polaWanda = PAT_V
+                }
+            }
+            
+            // bentuk:
+            if (polaWanda == PAT_KRVK) {
+                suku = r[1] + r[2] + r[3] + r[4]
+                silaba  = SIMALUNGUN[r[1]]
+				if (r[2]+r[3] != 're'){
+					silaba += SIMALUNGUN['+' + r[2] + 'a']
+					silaba += SIMALUNGUN[r[3]]
+				}else{
+					silaba += SIMALUNGUN['+' + r[2] + 'e']
+				}
+                silaba += sigegSimalungun(r[4])
+            } else if (polaWanda == PAT_KRV) {
+                suku = r[1] + r[2] + r[3]
+                silaba  = SIMALUNGUN[r[1]]
+				if (r[2]+r[3] != 're'){
+					silaba += SIMALUNGUN['+' + r[2] + 'a']
+					silaba += SIMALUNGUN[r[3]]
+				}else{
+					silaba += SIMALUNGUN['+' + r[2] + 'e']
+				}
+            } else if (polaWanda == PAT_KVK) {
+                suku = r[1] + r[3] + r[4]
+				//if ((r[1]+r[3] != 're')&&(r[1]+r[3] != 'le')){
+				silaba  = SIMALUNGUN[r[1]]
+				if((r[1]=='s')&&(r[3]=='u')){
+					silaba += SIMALUNGUN['su']
+				}else{
+					silaba += SIMALUNGUN[r[3]]
+				}
+				silaba += sigegSimalungun(r[4])
+				//}else{
+				//	silaba = REJANG[r[1]+r[3]];
+				//	silaba += sigeg(r[4])
+				//}
+            } else if (polaWanda == PAT_KV) {
+                suku = r[1] + r[3]
+				silaba  = SIMALUNGUN[r[1]]
+				if((r[1]=='s')&&(r[3]=='u')){
+					silaba += SIMALUNGUN['su']
+				}else{
+					silaba += SIMALUNGUN[r[3]]
+				}
+            } else if (polaWanda == PAT_VK) {
+                suku = r[3] + r[4]
+                silaba  = SIMALUNGUN[r[3].toUpperCase()]
+                silaba += sigegSimalungun(r[4])
+            } else {
+                suku = r[3]
+                silaba = SIMALUNGUN[suku.toUpperCase()]
+            } // end if
+            strOut += silaba 
+            polaWanda = PAT_SILABA
+        } else {
+            r = strInp.match(KONSONAN)
+            if (r != null) {
+                suku   = r[1]
+                if (polaWanda == PAT_SILABA)
+                {
+                    silaba = sigegSimalungun(suku)
+                } else {
+                    silaba = SIMALUNGUN[suku] + SIMALUNGUN['+O']
+                }
+                strOut += silaba
+            } else {
+                    r = strInp.match(TANDA_BACA)
+          					if (r != null){
+          						 suku = r[1]
+          						 silaba = SIMALUNGUN[suku]
+          						 strOut += silaba
+          					}else{
+          						suku = strInp.substr(0,1)
+          						silaba = suku
+          						strOut += suku
+          					}
+            } // end if
+            polaWanda = PAT_LAIN
+        }// end if
+        strInp = strInp.substr(suku.length)
+        idx += suku.length
+    
+    }// end while
+
+    return strOut
+}//end latin2Simalungun
 
 //Fungsi Untuk Mengeksekusi Fungsi Latin2Jawa ------------------------------//
 function btLatin2Aksara()
@@ -753,6 +922,8 @@ function btLatin2Aksara()
 		strAksara = latin2Makassar(latinText);   
 	}else if (jenisAksara == AK_MANDAILING){
 		strAksara = latin2Mandailing(latinText);   
+	}else if (jenisAksara == AK_SIMALUNGUN){
+		strAksara = latin2Simalungun(latinText);   
 	}
 	document.getElementById('aksaraLokal').value = strAksara;
 }
