@@ -260,7 +260,7 @@ function sigegSimalungun(aksara)
 {
     var output = ''
 
-    if (aksara == 'h' aksara == 'ng') {
+    if (aksara == 'h' || aksara == 'ng') {
         output = SIMALUNGUN['+' + aksara]
     } else {
         output = SIMALUNGUN[aksara] + SIMALUNGUN['+O']
