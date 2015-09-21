@@ -772,7 +772,7 @@ function latin2Simalungun(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'ng|ny|[bcdghjklmnprstwy]'
+    var KONS = 'ng|ny|[bdghjklmnprstwy]'
     var VOK  = 'ae|[aiuo]|e'
     var REP  = ''
     var SILABA = '^'
