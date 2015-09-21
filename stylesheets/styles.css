@@ -20,12 +20,12 @@
 }
 @font-face {
 	font-family:'Prada-Regular';
-	src: url('Prada_gdi.eot');
-	src: url('Prada_gdi.eot?#iefix') format('embedded-opentype'),
-		url('Prada_gdi.woff') format('woff'),
-		url('Prada_gdi.ttf') format('truetype'),
-		url('Prada_gdi.otf') format('opentype'),
-		url('Prada_gdi.svg#Prada-Regular') format('svg');
+	src: url('../fonts/Prada_gdi.eot');
+	src: url('../fonts/Prada_gdi.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Prada_gdi.woff') format('woff'),
+		url('../fonts/Prada_gdi.ttf') format('truetype'),
+		url('../fonts/Prada_gdi.otf') format('opentype'),
+		url('../fonts/Prada_gdi.svg#Prada-Regular') format('svg');
 	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
