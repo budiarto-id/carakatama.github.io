@@ -71,7 +71,7 @@ LONTARA['o']   = '\u1A1A';
 LONTARA['ae']  = '\u1A1B';
 // pada (tanda baca)
 LONTARA['\n']  = '\r\n'; 
-LONTARA[' ']   = '';
+LONTARA[' ']   = ' ';
 LONTARA['\t']  = '';
 
 
