@@ -18,6 +18,19 @@
     font-style: normal;
 
 }
+@font-face {
+	font-family:'Prada-Regular';
+	src: url('Prada_gdi.eot');
+	src: url('Prada_gdi.eot?#iefix') format('embedded-opentype'),
+		url('Prada_gdi.woff') format('woff'),
+		url('Prada_gdi.ttf') format('truetype'),
+		url('Prada_gdi.otf') format('opentype'),
+		url('Prada_gdi.svg#Prada-Regular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+001D-FB06;
+}
 
 html {
   background: #6C7989;
@@ -49,7 +62,7 @@ textarea#aksaraLatin, textarea#aksaraLokal {
 }
 
 textarea#aksaraLokal {
-	font-family: "pradaregular";
+	font-family: 'Prada-Regular';
 	font-size: 2.0em;
 	height: 200px;
 }
