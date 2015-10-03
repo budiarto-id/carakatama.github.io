@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Prada';
+  src: url('../fonts/Prada.eot?#iefix') format('embedded-opentype'),  url('../fonts/Prada.woff') format('woff'), url('../fonts/Prada.ttf')  format('truetype'), url('../fonts/Prada.svg#Prada') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'pradaregular';
+    src: url('../fonts/prada-webfont.eot');
+    src: url('../fonts/prada-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/prada-webfont.woff2') format('woff2'),
+         url('../fonts/prada-webfont.woff') format('woff'),
+         url('../fonts/prada-webfont.ttf') format('truetype'),
+         url('../fonts/prada-webfont.svg#pradaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+	font-family:'Prada-Regular';
+	src: url('../fonts/Prada_gdi.eot');
+	src: url('../fonts/Prada_gdi.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Prada_gdi.woff') format('woff'),
+		url('../fonts/Prada_gdi.ttf') format('truetype'),
+		url('../fonts/Prada_gdi.otf') format('opentype'),
+		url('../fonts/Prada_gdi.svg#Prada-Regular') format('svg');
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	unicode-range: U+001D-FB06;
+}
+
+#pilihan{
+	width: 98%;
+	/*border: 3px solid #cccccc;*/
+	padding: 5px;
+	font-family: "Segoe UI", Tahoma, sans-serif;
+	font-size: 1.2em;
+    /*background: white;*/
+}
+
+textarea#aksaraLatin, textarea#aksaraLokal {
+	width: 98%;
+	height: 150px;
+	/*border: 3px solid #cccccc;*/
+	padding: 5px;
+	font-family: "Segoe UI", Tahoma, sans-serif;
+	font-size: 1.2em;
+    /*background: white;*/
+}
+
+textarea#aksaraLokal {
+	font-family: 'Prada-Regular';
+	font-size: 2.0em;
+	height: 200px;
+}
