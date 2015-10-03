@@ -111,6 +111,7 @@ LONTARA['A']   = '\u1A15';//A984';
 LONTARA['I']   = '\u1A15\u1A17';
 LONTARA['U']   = '\u1A15\u1A18';
 LONTARA['E']   = '\u1A15\u1A19';
+LONTARA['E\'']   = '\u1A15\u1A19';
 LONTARA['O']   = '\u1A15\u1A1A';
 LONTARA['AE']  = '\u1A15\u1A1B';
 //
@@ -118,6 +119,7 @@ LONTARA['a']   = '';//A984';
 LONTARA['i']   = '\u1A17';
 LONTARA['u']   = '\u1A18';
 LONTARA['e']   = '\u1A19';
+LONTARA['e\'']   = '\u1A19';
 LONTARA['o']   = '\u1A1A';
 LONTARA['ae']  = '\u1A1B';
 // pada (tanda baca)
@@ -415,7 +417,7 @@ function latin2Bugis(strInp)
     var polaWanda = PAT_LAIN
     
     var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdghjklmnprstwy]'
-    var VOK  = 'ae|[aeiuo]'
+    var VOK  = 'e\'|[aeiuo]'
     var SILABA = '^'
 	var TANDA = '[\n \t]'
     SILABA += '('+KONS+')?'             // group(1), K
@@ -439,9 +441,11 @@ function latin2Bugis(strInp)
             if (polaWanda == PAT_KV) {
                 suku = r[1] + r[2]
 				silaba  = LONTARA[r[1]]
+				if (r[2] == 'e') r[2] = 'ae'
 				silaba += LONTARA[r[2]]
             }else {
                 suku = r[2]
+				if (suku == 'e') suku = 'ae'
                 silaba = LONTARA[suku.toUpperCase()]
             } // end if
             strOut += silaba 
