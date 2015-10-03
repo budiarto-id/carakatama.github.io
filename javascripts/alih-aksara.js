@@ -1062,13 +1062,13 @@ function btLatin2Aksara()
 	var strAksara =''
 	var jenisAksara = document.getElementById("jenisAksara").selectedIndex;
 	if (jenisAksara == AK_REJANG){
-		document.getElementById('aksaraLokal').setAttribute("class", "Prada");
+		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'Prada-Regular'");
 		strAksara = latin2Rejang(latinText);   
 	}else if (jenisAksara == AK_MAKASSAR){
-		document.getElementById('aksaraLokal').setAttribute("class", "Prada");
+		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'Prada-Regular'");
 		strAksara = latin2Makassar(latinText);   
 	}else if (jenisAksara == AK_BUGIS){
-		document.getElementById('aksaraLokal').setAttribute("class", "Prada");
+		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'Prada-Regular'");
 		strAksara = latin2Bugis(latinText);   
 	}else if (jenisAksara == AK_MBOJO){
 		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'MbojoANSI-Regular'");
@@ -1077,7 +1077,7 @@ function btLatin2Aksara()
 		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'Prada-Regular'");
 		strAksara = latin2Mandailing(latinText);   
 	}else if (jenisAksara == AK_SIMALUNGUN){
-		document.getElementById('aksaraLokal').setAttribute("class", "Prada");
+		document.getElementById('aksaraLokal').setAttribute("style", "font-family: 'Prada-Regular'");
 		strAksara = latin2Simalungun(latinText);   
 	}
 	document.getElementById('aksaraLokal').value = strAksara;
