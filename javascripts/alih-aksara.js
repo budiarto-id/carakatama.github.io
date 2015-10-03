@@ -522,17 +522,32 @@ function latin2Mbojo(strInp)
 			if (polaWanda == PAT_KKV){
 				suku = r[1] + r[2] + r[3]
 				silaba = MBOJO[r[1]]
-				if (r[1] == r[2]){
-					silaba += 'x'
+				if (r[3] == 'e'){
+					silaba += MBOJO[r[3]]
+					if (r[1] == r[2]){
+						silaba += 'x'
+					}else{
+						silaba += MBOJO['+O']
+						silaba += MBOJO[r[2]]
+					}
 				}else{
-					silaba += MBOJO['+O']
-					silaba += MBOJO[r[2]]
+					if (r[1] == r[2]){
+						silaba += 'x'
+					}else{
+						silaba += MBOJO['+O']
+						silaba += MBOJO[r[2]]
+					}
+					silaba += MBOJO[r[3]]
 				}
-				silaba += MBOJO[r[3]]
 			}else if (polaWanda == PAT_KV) {
                 suku = r[1] + r[3]
-				silaba  = MBOJO[r[1]]
-				silaba += MBOJO[r[3]]
+				if (r[3] == 'e'){
+					silaba  = MBOJO[r[3]]
+					silaba += MBOJO[r[1]]
+				}else{
+					silaba  = MBOJO[r[1]]
+					silaba += MBOJO[r[3]]
+				}
             }else if (polaWanda == PAT_V) {
                 suku = r[3]
                 silaba = MBOJO[suku.toUpperCase()]
