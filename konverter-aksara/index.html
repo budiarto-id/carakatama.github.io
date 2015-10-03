@@ -13,29 +13,24 @@
     <meta property="og:site_name" content="Konverter Aksara Lokal" />
     <meta property="fb:app_id" content="974403019290383" />
     <meta property="og:image" content="http://aksaradinusantara.com/wp-content/uploads/2015/08/11902255_1099092280102693_2188461792227845099_n.png" />
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <title>Konverter Aksara by Carakatama - Konverter Aksara Latin ke Aksara Daerah</title>
 
-    <link rel="stylesheet" href="../stylesheets/styles.css">
-    <link rel="stylesheet" href="../stylesheets/github-dark.css">
-    <script src="../javascripts/scale.fix.js"></script>
+    <link rel="stylesheet" href="../stylesheets/styles2.css">
     <script src="../javascripts/alih-aksara.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script>
-		$(function() {
-		$( "#tabs" ).tabs();
-		});
-	</script>
-
+	
+    <!-- site css -->
+    <link rel="stylesheet" href="../css/site.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="../js/html5shiv.js"></script>
+      <script src="../js/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="../js/site.min.js"></script>
   </head>
-  <body>
+  <body style="background-color: #f1f2f6;">
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -53,52 +48,52 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-    
-    <div class="wrapper">
-      <header class="without-description">
-        <center>
-          <h1><a href="http://carakatama.github.io/konverter-aksara">Konverter Aksara</a></h1>
-          Konverter Aksara Latin ke Aksara Daerah<br/>
-		  Disponsori oleh <a href="http://semarme.com">Semar Multimedia</a>
-        </center>
-        <p></p>
-      </header>
-      <section>
-	  <div id="tabs">
-		<ul>
-			<li><a href="#tabs-1">Home</a></li>
-			<li><a href="#tabs-2">Tentang Kami</a></li>
-		</ul>
-		<div id="tabs-1">
+	
+	<!-- Tabs
+      ================================================== -->
+    <div class="panel">
+	  <ul id="myTab1" class="nav nav-tabs nav-justified navbar-default">
+		<li class="active"><a href="#home1" data-toggle="tab">Home</a></li>
+		<li><a href="#download1" data-toggle="tab">Download</a></li>
+		<li><a href="#about1" data-toggle="tab">Tentang Kami</a></li>
+	  </ul>
+	  <div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active in" id="home1">
 			<div class="fb-like" data-href="http://carakatama.github.io/konverter-aksara/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 			<p>Aksara Latin</p>
-			<textarea id="aksaraLatin" onkeyup="btLatin2Aksara()"></textarea>
+			<textarea id="aksaraLatin" class="form-control" onkeyup="btLatin2Aksara()"></textarea>
 			<hr/>
-			Alih aksara ke 	
-			<select id="jenisAksara" onclick="btLatin2Aksara()" onchange="btLatin2Aksara()">
-			  <option>Aksara Rejang</option>
-			  <option>Asara Lontara </option>
-			  <!--
-			  <option>Asara Lontara (Bugis)</option>-->
-			  <option>Asara Batak (Mandailing)</option>
-			  <option>Asara Batak (Simalungun)</option><!--
-			  <option>Asara Batak (Pakpak)</option>
-			  <option>Asara Batak (Toba)</option>
-			  <option>Asara Batak (Karo)</option>
-			  -->
-			</select>
+			<div class="input-group" id="pilihan">
+				<span class="input-group-addon">Alih aksara ke </span>
+				<select class="form-control" id="jenisAksara" onclick="btLatin2Aksara()" onchange="btLatin2Aksara()">
+				  <option>Aksara Rejang</option>
+				  <option>Asara Lontara </option>
+				  <!--
+				  <option>Asara Lontara (Bugis)</option>-->
+				  <option>Asara Batak (Mandailing)</option>
+				  <option>Asara Batak (Simalungun)</option><!--
+				  <option>Asara Batak (Pakpak)</option>
+				  <option>Asara Batak (Toba)</option>
+				  <option>Asara Batak (Karo)</option>
+				  -->
+				</select>
+			</div>
 			<br/>
-			<textarea id="aksaraLokal"></textarea>
+			<textarea class="form-control" id="aksaraLokal"></textarea>
 			<hr/>
-			NB: Gunakan font <a href="https://sites.google.com/site/fontsundaprada/unduh-font-sunda-prada/prada.ttf?attredirects=0&d=1">Prada</a>
-		</div><!-- id=tabs-1 -->
-		<div id="tabs-2">
-			Aplikasi ini dikembangkan oleh Arif Budiarto bersama <a>semarme.com (Semar Multimedia)</a>
-		</div><!-- id=tabs-1 -->
-      </div>
-	  <div class="fb-comments" data-href="http://carakatama.github.io/konverter-aksara/" data-numposts="5"></div>r
-	  </section>
-    </div>
+		</div>
+		<div class="tab-pane fade" id="download1">
+		  Untuk unduh font Aksara Daerah silakan klik <a href ="http://aksaradinusantara.com/font">di sini</a>.
+		</div>
+		<div class="tab-pane fade" id="about1">
+		  <p>
+			Aplikasi ini dikembangkan oleh Arif Budiarto bersama <a href="http://semarme.com">semarme.com (Semar Multimedia)</a>
+			</p>
+		</div>
+	  </div>
+	<div class="fb-comments" data-href="http://carakatama.github.io/konverter-aksara/" data-numposts="5"></div>r
+	</div>
+
     <footer>
       <p>©2015 | <a href="https://www.facebook.com/Satriyo.pringgondalan">Facebook </a> | <a href="http://github.com/carakatama"> Github </a> | <a href="http://semarme.com"> semarme.com </a> | <a href="http://aksaradinusantara.com"> aksaradinusantara.com </a></p>
     </footer>

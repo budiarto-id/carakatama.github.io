@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="utf-8" http-equiv="encoding">
+    <meta http-equiv="X-UA-Compatible" content="text/html;" />
+    <meta property="fb:admins" content="100000015175640"/>
+    <meta name="description" content="Laman ini berfungsi untuk aliha aksara dari aksara latin ke berbagai aksara di nusantara."/>
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Konverter Aksara Lokal" />
+    <meta property="og:description" content="Laman ini berfungsi untuk aliha aksara dari aksara latin ke berbagai aksara di nusantara." />
+    <meta property="og:url" content="http://carakatama.github.io/konverter-aksara" />
+    <meta property="og:site_name" content="Konverter Aksara Lokal" />
+    <meta property="fb:app_id" content="974403019290383" />
+    <meta property="og:image" content="http://aksaradinusantara.com/wp-content/uploads/2015/08/11902255_1099092280102693_2188461792227845099_n.png" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <title>Konverter Aksara by Carakatama - Konverter Aksara Latin ke Aksara Daerah</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <script src="../javascripts/scale.fix.js"></script>
+    <script src="../javascripts/alih-aksara.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+		$(function() {
+		$( "#tabs" ).tabs();
+		});
+	</script>
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1689897227911969',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <div class="wrapper">
+      <header class="without-description">
+        <center>
+          <h1><a href="http://carakatama.github.io/konverter-aksara">Konverter Aksara</a></h1>
+          Konverter Aksara Latin ke Aksara Daerah<br/>
+		  Disponsori oleh <a href="http://semarme.com">Semar Multimedia</a>
+        </center>
+        <p></p>
+      </header>
+      <section>
+	  <div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Home</a></li>
+			<li><a href="#tabs-2">Tentang Kami</a></li>
+		</ul>
+		<div id="tabs-1">
+			<div class="fb-like" data-href="http://carakatama.github.io/konverter-aksara/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+			<p>Aksara Latin</p>
+			<textarea id="aksaraLatin" onkeyup="btLatin2Aksara()"></textarea>
+			<hr/>
+			Alih aksara ke 	
+			<select id="jenisAksara" onclick="btLatin2Aksara()" onchange="btLatin2Aksara()">
+			  <option>Aksara Rejang</option>
+			  <option>Asara Lontara </option>
+			  <!--
+			  <option>Asara Lontara (Bugis)</option>-->
+			  <option>Asara Batak (Mandailing)</option>
+			  <option>Asara Batak (Simalungun)</option><!--
+			  <option>Asara Batak (Pakpak)</option>
+			  <option>Asara Batak (Toba)</option>
+			  <option>Asara Batak (Karo)</option>
+			  -->
+			</select>
+			<br/>
+			<textarea id="aksaraLokal"></textarea>
+			<hr/>
+			NB: Gunakan font <a href="https://sites.google.com/site/fontsundaprada/unduh-font-sunda-prada/prada.ttf?attredirects=0&d=1">Prada</a>
+		</div><!-- id=tabs-1 -->
+		<div id="tabs-2">
+			Aplikasi ini dikembangkan oleh Arif Budiarto bersama <a>semarme.com (Semar Multimedia)</a>
+		</div><!-- id=tabs-1 -->
+      </div>
+	  <div class="fb-comments" data-href="http://carakatama.github.io/konverter-aksara/" data-numposts="5"></div>r
+	  </section>
+    </div>
+    <footer>
+      <p>©2015 | <a href="https://www.facebook.com/Satriyo.pringgondalan">Facebook </a> | <a href="http://github.com/carakatama"> Github </a> | <a href="http://semarme.com"> semarme.com </a> | <a href="http://aksaradinusantara.com"> aksaradinusantara.com </a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
