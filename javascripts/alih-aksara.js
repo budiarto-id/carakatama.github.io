@@ -11,11 +11,11 @@ PAT_LAIN   = 0x00	//Sanesipun
 //Variabel jenis Aksara Lokal -------------------------------------------// 
 AK_REJANG     = 0x00
 AK_MAKASSAR   = 0x01
-AK_BUGIS      = 0xf2
-AK_MANDAILING = 0x02
-AK_SIMALUNGUN = 0x03
-AK_TOBA       = 0x04
-AK_PAKPAK     = 0x05
+AK_BUGIS      = 0x02
+AK_MANDAILING = 0x03
+AK_SIMALUNGUN = 0x04
+AK_TOBA       = 0x05
+AK_PAKPAK     = 0x06
 AK_KARO       = 0x07
 AK_LAIN       = 0xff
 
@@ -286,8 +286,8 @@ function latin2Makassar(strInp)
     var suku
     var polaWanda = PAT_LAIN
     
-    var KONS = 'ngk|ng|nyc|nc|ny|nr|mp|[bcdfghjklmnpqrstvwxyz]'
-    var VOK  = 'ae|[aeiuo]'
+    var KONS = 'ng|ny|[bcdfghjklmnpqrstvwxyz]'
+    var VOK  = '[aeiuo]'
     var SILABA = '^'
 	var TANDA = '[\n \t]'
     SILABA += '('+KONS+')?'             // group(1), K
@@ -918,7 +918,9 @@ function btLatin2Aksara()
 	var jenisAksara = document.getElementById("jenisAksara").selectedIndex;
 	if (jenisAksara == AK_REJANG){
 		strAksara = latin2Rejang(latinText);   
-	}else if (jenisAksara == AK_MAKASSAR){
+	}else if (jenisAksara == AK_BUGIS){
+		strAksara = latin2Bugis(latinText);   
+	}}else if (jenisAksara == AK_MAKASSAR){
 		strAksara = latin2Makassar(latinText);   
 	}else if (jenisAksara == AK_MANDAILING){
 		strAksara = latin2Mandailing(latinText);   
