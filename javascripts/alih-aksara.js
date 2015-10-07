@@ -525,13 +525,15 @@ function latin2Mbojo(strInp)
             // bentuk:
 			if (polaWanda == PAT_KKV){
 				suku = r[1] + r[2] + r[3]
-				silaba = MBOJO[r[1]]
 				if (r[3] == 'e'){
-					silaba += MBOJO[r[3]]
 					if (r[1] == r[2]){
+						silaba += MBOJO[r[3]]
+						silaba = MBOJO[r[1]]
 						silaba += 'x'
 					}else{
+						silaba = MBOJO[r[1]]
 						silaba += MBOJO['+O']
+						silaba += MBOJO[r[3]]
 						silaba += MBOJO[r[2]]
 					}
 				}else{
