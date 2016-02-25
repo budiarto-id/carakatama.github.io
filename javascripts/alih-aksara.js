@@ -64,7 +64,7 @@ MBOJO['i']  = 'i';
 MBOJO['u']  = 'u';
 MBOJO['e']  = 'e';
 MBOJO['o']  = 'o';
-MBOJO['+O'] = '\\';
+MBOJO['+O'] = '|';
 // pada (tanda baca)
 MBOJO['\n'] = '\r\n'; 
 MBOJO[' ']  = '';
@@ -512,8 +512,8 @@ function latin2Mbojo(strInp)
 		//return r;
         if (r !== null) {
             if (r[2]){
-				polaWanda = PAT_KKV
-			}else{
+			polaWanda = PAT_KKV
+		}else{
 				if(r[1]){
 					polaWanda = PAT_KV
 				}else{
