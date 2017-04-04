@@ -865,7 +865,7 @@ function latin2Mandailing(strInp)
         		//		}
             } else if (polaWanda == PAT_VK) {
                 suku = r[3] + r[4]
-                silaba  = MANDAILING['h'] + MANDAILING[r[3]]
+                silaba  = MANDAILING['a'] + MANDAILING[r[3]]
                 silaba += sigegMandailing(r[4])
             } else {
                 suku = r[3]
@@ -1035,7 +1035,7 @@ function latin2Simalungun(strInp)
 				}
             } else if (polaWanda == PAT_VK) {
                 suku = r[3] + r[4]
-                silaba  = SIMALUNGUN['h']+SIMALUNGUN[r[3]]
+                silaba  = SIMALUNGUN['a']+SIMALUNGUN[r[3]]
                 silaba += sigegSimalungun(r[4])
             } else {
                 suku = r[3]
