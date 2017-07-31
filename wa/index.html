@@ -28,21 +28,46 @@
       <script src="../js/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="../js/site.min.js"></script>
-	<title>Generate Link WA</title>
+	<title>Generate Link WA | Makruva Digital Solution</title>
 	<script src="../js/jquery.min.js"></script>
 </head>
-<body>
-	Nomor WA : <input type="text" id="nomor" value="62"/><br/>
-	Pesan : <textarea id="pesan"/></textarea><br/>
+<body style="background-color: #f1f2f6;">
+		<center><h3>Makruva Digital Solution</h3></center>
+		<hr/>
+	<table>
+		<tr>
+			<td>Nomor WA </td>
+			<td> : <input type="text" id="nomor" value="62"/><br/></td>
+		</tr>
+		<tr>
+			<td>Pesan </td>
+			<td> : <textarea id="pesan" style="min-height: 200px; min-width: 400px;"/></textarea><br/></td>
+		</tr>
+	</table>
+	
 	<button id="btn-generate">Generate</button><br/><hr/>
 	<p id="generated"></p>
+	<button id="btn-copy" onclick="copyToClipboard('#generated')">Copy Link to Clipboard</button>
+	<br/><br/>
+    <footer>
+      <p>Dibuat oleh Makruva Digital Solution</p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 <script>
 function generate(){
 	var u = "https://api.whatsapp.com/send?phone="+$("#nomor").val()+"&text="+encodeURIComponent($("#pesan").val());
 	$("#generated").html(u);
 }
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
 $(document).ready(function (){
 	$("#btn-generate").click(generate);
+	//$("#btn-copy").click(generate);
 });
 </script>
 </body>
