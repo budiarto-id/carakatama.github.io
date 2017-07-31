@@ -38,7 +38,7 @@
 	<p id="generated"></p>
 <script>
 function generate(){
-	var u = "https://api.whatsapp.com/send?phone="+$("#nomor").val()+"text="+encodeURIComponent($("#pesan").val());
+	var u = "https://api.whatsapp.com/send?phone="+$("#nomor").val()+"&text="+encodeURIComponent($("#pesan").val());
 	$("#generated").html(u);
 }
 $(document).ready(function (){
